@@ -15,12 +15,15 @@ import router from './router'
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
 
+import Vuex from 'vuex'
+
 Vue.config.productionTip = false
 
 Vue.use(VueMaterial)
 Vue.use(VueAxios, axios)
 Vue.use(VueSocketIO, process.env.NODE_ENV === 'development' ? io('localhost:5000') : io())
 Vue.use(Buefy)
+Vue.use(Vuex)
 
 Vue.material.registerTheme({
   main: {
