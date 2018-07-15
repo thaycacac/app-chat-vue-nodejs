@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-    <h2 class="md-title">Olá {{ name }}, seja bem vindo!</h2>
-
-    <div class="chat-container">
+    <p>{{name}}</p>
+    <div>
       <div class="chat-view">
         <div>
           <div v-for="msg in messages">
@@ -43,8 +42,8 @@ export default {
     return {
       clientMsg: '',
       messages: [
-        { sender: 'admin', text: 'Olá!' },
-        { sender: 'admin', text: 'Sejam bem viados!' }
+        { sender: 'admin', text: 'Hello' },
+        { sender: 'admin', text: 'Well come' }
       ]
     }
   },
