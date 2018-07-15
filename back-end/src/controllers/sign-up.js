@@ -10,6 +10,6 @@ exports.post = (req, res) => {
     res.status(201).send({ message: "Đăng ký thành công." })
   })
   .catch(() => {
-    res.status(400).send({ message: "Không thể đăng ký" })
+    res.status(400).send({ message: "Tài khoản đã tồn tại" })
   })
 }

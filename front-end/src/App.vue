@@ -1,51 +1,54 @@
 <template>
-  <main id="app" class="phone-viewport">
-    <md-theme md-name="main">
-      <md-toolbar>
-        <!-- <md-button class="md-icon-button" @click="toggleLeftSidenav">
-          <md-icon>menu</md-icon>
-        </md-button> -->
+<div>
+  <router-view></router-view>
+    <main id="app" class="phone-viewport">
+      <md-theme md-name="main">
+        <md-toolbar>
+          <!-- <md-button class="md-icon-button" @click="toggleLeftSidenav">
+            <md-icon>menu</md-icon>
+          </md-button> -->
 
-        <h1 class="md-title" style="flex: 1">{{ title }}</h1>
-      </md-toolbar>
-
-      <md-sidenav class="md-left" ref="leftSidenav">
-        <md-toolbar md-class="dense">
-            <h3 class="md-title">Sidenav content</h3>
+          <h1 class="md-title" style="flex: 1">{{ title }}</h1>
         </md-toolbar>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi cupiditate esse necessitatibus beatae nobis, deserunt ut est fugit, tempora deleniti, eligendi commodi doloribus. Nemo, assumenda possimus, impedit inventore perferendis iusto!</p>
-      </md-sidenav>
+        <md-sidenav class="md-left" ref="leftSidenav">
+          <md-toolbar md-class="dense">
+              <h3 class="md-title">Sidenav content</h3>
+          </md-toolbar>
 
-      <md-tabs class="md-accent" style="overflow: hidden" @change="t => tab = t">
-        <md-tab id="main" md-label="Início" :md-active="online" :md-disabled="!online">
-          <CcMain :name="user.name"></CcMain>
-        </md-tab>
-        <md-tab id="hello" md-label="Hello">
-          <CcHello></CcHello>
-        </md-tab>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi cupiditate esse necessitatibus beatae nobis, deserunt ut est fugit, tempora deleniti, eligendi commodi doloribus. Nemo, assumenda possimus, impedit inventore perferendis iusto!</p>
+        </md-sidenav>
 
-        <md-tab v-if="!online" id="login" md-label="Login" :md-active="!online">
-          <CcLogin @auth="login"></CcLogin>
-        </md-tab>
-        <md-tab v-if="online" id="logout" md-label="Logout"></md-tab>
+        <md-tabs class="md-accent" style="overflow: hidden" @change="t => tab = t">
+          <md-tab id="main" md-label="Início" :md-active="online" :md-disabled="!online">
+            <CcMain :name="user.name"></CcMain>
+          </md-tab>
+          <md-tab id="hello" md-label="Hello">
+            <CcHello></CcHello>
+          </md-tab>
 
-        <md-tab v-if="!online" id="signup" md-label="Cadastre-se">
-          <CcSignup></CcSignup>
-        </md-tab>
-      </md-tabs>
+          <md-tab v-if="!online" id="login" md-label="Login" :md-active="!online">
+            <CcLogin @auth="login"></CcLogin>
+          </md-tab>
+          <md-tab v-if="online" id="logout" md-label="Logout"></md-tab>
 
-      <md-dialog ref="logoutMsg">
-        <md-dialog-title>{{ title }}</md-dialog-title>
+          <md-tab v-if="!online" id="signup" md-label="Cadastre-se">
+            <CcSignup></CcSignup>
+          </md-tab>
+        </md-tabs>
 
-        <md-dialog-content><i>may the force be with you</i></md-dialog-content>
+        <md-dialog ref="logoutMsg">
+          <md-dialog-title>{{ title }}</md-dialog-title>
 
-        <md-dialog-actions>
-          <md-button class="md-accent" @click="logout">Ok</md-button>
-        </md-dialog-actions>
-      </md-dialog>
-    </md-theme>
-  </main>
+          <md-dialog-content><i>may the force be with you</i></md-dialog-content>
+
+          <md-dialog-actions>
+            <md-button class="md-accent" @click="logout">Ok</md-button>
+          </md-dialog-actions>
+        </md-dialog>
+      </md-theme>
+    </main>
+  </div>
 </template>
 
 <script>
