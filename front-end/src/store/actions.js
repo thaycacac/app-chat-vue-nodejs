@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Buefy from 'buefy'
 
 export default {
   register ({commit}, user) {
@@ -11,11 +12,12 @@ export default {
     commit('setRegister', user)
     )
     .then(response => {
-      this.$dialog.alert(response.data.message)
+      Buefy.$dialog.alert(response.data.message)
     })
     .catch(err => {
       console.log(err.message)
-      this.$dialog.alert({
+      alert(err.response.data.message)
+      Buefy.$dialog.alert({
         title: 'Lỗi',
         message: err.response.data.message,
         type: 'is-danger',
