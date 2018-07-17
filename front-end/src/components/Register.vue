@@ -137,28 +137,10 @@
     },
     methods: {
       register () {
-        this.loading = true
-        this.axios.post('/api/signup', {
-          name: this.username,
+        this.$store.dispatch('register', {
+          username: this.username,
           email: this.email,
           password: this.password
-        })
-        .then(res => {
-          this.$dialog.alert(res.data.message)
-        })
-        .catch(err => {
-          console.log(err.message)
-          this.$dialog.alert({
-            title: 'Lỗi',
-            message: err.response.data.message,
-            type: 'is-danger',
-            hasIcon: true,
-            icon: 'times-circle',
-            iconPack: 'fa'
-          })
-        })
-        .then(() => {
-          this.loading = false
         })
       }
     },

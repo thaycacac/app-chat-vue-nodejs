@@ -17,6 +17,8 @@ import 'buefy/lib/buefy.css'
 
 import Vuex from 'vuex'
 
+import store from './store'
+
 Vue.config.productionTip = false
 
 Vue.use(VueMaterial)
@@ -75,5 +77,6 @@ Vue.material.registerTheme({
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
