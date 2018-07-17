@@ -1,5 +1,7 @@
 <template>
   <div>
+    <br>
+    <br>
     <section class="container">
       <p>{{name}}</p>
       <div class="columns">
