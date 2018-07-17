@@ -1,7 +1,0 @@
-register () {
-        this.$store.dispatch('register', {
-          username: this.username,
-          email: this.email,
-          password: this.password
-        })
-      }

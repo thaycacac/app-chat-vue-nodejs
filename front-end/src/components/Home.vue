@@ -5,7 +5,7 @@
                 <li 
                 style="width:100%"
                 v-for="msg in messages">
-                    <div class="msj macro" v-if="msg.sender == name">
+                    <div class="msj macro" v-if="msg.sender !== sender">
                         <figure class="image is-48x48">
                             <img style="border-radius:50%" src="https://bulma.io/images/placeholders/128x128.png">
                         </figure>
@@ -50,7 +50,6 @@
 
 <script>
 export default {
-  props: ['name', 'email'],
   data () {
     return {
       clientMsg: '',
@@ -58,22 +57,18 @@ export default {
         { sender: 'admin', text: 'Hello' },
         { sender: 'hoapnse05740', text: 'I\'m thaycacac' }
       ],
-      username: this.name
+      sender: this.$store.state.email
     }
   },
-
   methods: {
     onSubmit () {
       let client = this.$socket
 
-      client.emit('chatMessage', { sender: this.name, text: this.clientMsg })
-      this.messages.push({ sender: this.name, text: this.clientMsg })
-
-      document.getElementById('msgField').value = ''
+      client.emit('chatMessage', { sender: this.sender, text: this.clientMsg })
+      this.messages.push({ sender: this.sender, text: this.clientMsg })
       this.clientMsg = ''
     }
   },
-
   sockets: {
     chatMessage: function (msg) {
       this.messages.push(msg)
@@ -116,7 +111,7 @@ export default {
 }
 .msj-rta{
     float:right;background:whitesmoke;
-    background-color: hsl(348, 81%, 79%);
+    background-color: hsl(171, 93%, 83%);
 }
 .msj{
     float:left;background:white;
@@ -168,7 +163,7 @@ ul {
     position:relative;
     border-style: solid;
     border-width: 13px 13px 0 0;
-    border-color: hsl(348, 81%, 79%) transparent transparent transparent;        
+    border-color: hsl(171, 93%, 83%) transparent transparent transparent;        
 }  
 input:focus{
     outline: none;
