@@ -1,8 +1,6 @@
 <template>
   <div>
     <section class="container">
-      <br>
-      <br>
       <p>{{name}}</p>
       <div class="columns">
         <div class="column is-3"></div>
