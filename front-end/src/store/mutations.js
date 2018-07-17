@@ -2,8 +2,8 @@ export default {
   setLoading (state, status) {
     state.loading = status
   },
-  setRegister (state, user) {
-    state.user.username = user.username
-    state.user.email = user.email
+  setUser (state, user) {
+    state.username = user.username
+    state.email = user.email
   }
 }

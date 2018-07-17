@@ -3,7 +3,6 @@
     <br>
     <br>
     <section class="container">
-      <p>{{name}}</p>
       <div class="columns">
         <div class="column is-3"></div>
         <div class="column is-6">
@@ -84,31 +83,15 @@
     data () {
       return {
         email: '',
-        password: '',
-        loading: false
+        password: ''
       }
     },
     methods: {
       login () {
-        this.loading = true
-        this.axios
-      .post('/api/login', {
-        email: this.email,
-        password: this.password
-      })
-      .then(res => {
-        if (res.data.auth) {
-          this.$emit('auth', [res.data.name, res.data.email])
-          console.log('login success')
-        }
-      })
-      .catch(err => {
-        this.failMsg = err.response.data.message
-        this.loginFail = true
-      })
-      .then(() => {
-        this.loading = false
-      })
+        this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password
+        })
       }
     },
     computed: {

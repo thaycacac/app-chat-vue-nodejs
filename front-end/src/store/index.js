@@ -17,12 +17,8 @@ Vue.use(Buefy)
 
 export default new Vuex.Store({
   state: {
-    user: [
-      {
-        username: '',
-        email: ''
-      }
-    ],
+    username: '',
+    email: '',
     loading: false,
     error: {
       message: ''
