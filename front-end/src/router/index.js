@@ -20,7 +20,7 @@ export default new Router({
       component: SignIn
     },
     {
-      path: '/home',
+      path: '/',
       name: 'Home',
       component: Home
     }
