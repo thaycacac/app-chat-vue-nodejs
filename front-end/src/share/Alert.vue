@@ -4,6 +4,7 @@
 
 <script>
 import store from '@/store'
+import router from '@/router'
 export default {
   data () {
     return {
@@ -21,6 +22,7 @@ export default {
         icon: 'times-circle',
         onConfirm () {
           store.dispatch('setError')
+          router.push('/')
         }
       })
     }

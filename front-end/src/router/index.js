@@ -4,6 +4,7 @@ import SignIn from '@/Components/SignIn'
 import Home from '@/Components/Home'
 import Alert from '@/share/Alert'
 import Router from 'vue-router'
+import AuthGuard from './auth-guard'
 
 Vue.use(Router)
 
@@ -23,12 +24,14 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      beforeEnter: AuthGuard
     },
     {
       path: '/alert',
       name: 'Alert',
-      component: Alert
+      component: Alert,
+      beforeEnter: AuthGuard
     }
   ]
 })

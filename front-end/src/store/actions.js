@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '../router'
 
 export default {
   register ({commit}, user) {
@@ -59,6 +60,7 @@ export default {
         username: '',
         email: ''
       })
+      router.push('/login')
     })
     .catch(err => {
       console.log('Lỗi đăng xuất', err)

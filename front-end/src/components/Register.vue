@@ -32,7 +32,7 @@
               v-if="usernameValid === false">This username is invalid</p>
             </div>
             <!-- TODO: EMAIL -->
-            <div class="field" v-if="usernameValid">
+            <div class="field">
               <label class="label">Email</label>
               <div class="control has-icons-left has-icons-right">
                 <input 
@@ -53,7 +53,7 @@
               <p class="help is-danger" v-if="emailValid === false">This email is invalid</p>
             </div>
             <!-- TODO: PASSWORD -->
-            <div class="field" v-if="emailValid">
+            <div class="field">
               <label class="label">Password</label>
               <div class="control has-icons-left has-icons-right">
                 <input 
@@ -82,7 +82,7 @@
               </ul>
             </div>
             <!-- TODO: REPASSWORD -->
-            <div class="field" v-if="passwordValid">
+            <div class="field">
               <label class="label">Repassword</label>
               <div class="control has-icons-left has-icons-right">
                 <input 
@@ -105,7 +105,7 @@
               v-if="repasswordValid === true">This repassword is available</p>
             </div>
 
-            <div class="field is-grouped" v-if="isRegister">
+            <div class="field is-grouped">
               <div class="control">
                 <!-- <router-link to="/"> -->
                 <button 

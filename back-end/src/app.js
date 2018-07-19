@@ -19,6 +19,7 @@ mongoose.connect('mongodb://thaycacac:Camonem123@ds239071.mlab.com:39071/test-lo
 })
 
 const users = require('./models/users')
+const messages = require('./models/messages')
 
 const loginRoute = require('./routes/sign-in-route')
 const logoutRoute = require('./routes/logout-route')

@@ -42,22 +42,30 @@
         <nav class="tabs">
           <div class="container">
             <ul>
-              <router-link to="/">
+              <router-link 
+              to="/"
+              v-if="isLogin">
                 <li class="is-active">
                   <a>Home</a>
                 </li>
               </router-link>
-              <router-link to="/register">
+              <router-link 
+              to="/register"
+              v-if="!isLogin">
                 <li>
                   <a>SignUp</a>
                 </li>
               </router-link>
-              <router-link to="/login">
+              <router-link 
+              to="/login"
+              v-if="!isLogin">
                 <li>
                   <a>SignIn</a>
                 </li>
               </router-link>
-              <li @click="logout">
+              <li 
+              @click="logout" 
+              v-if="isLogin">
                 <a>Logout</a>
               </li>
             </ul>
@@ -70,10 +78,16 @@
 </template>
 
 <script>
+  import store from './store'
   export default {
     methods: {
       logout () {
         this.$store.dispatch('logout')
+      }
+    },
+    computed: {
+      isLogin () {
+        return store.getters.email !== ''
       }
     }
   }
@@ -100,6 +114,5 @@
   // }
 </script>
 <style>
-
 
 </style>
