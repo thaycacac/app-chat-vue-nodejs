@@ -2,7 +2,9 @@
   <div>
     <br>
     <br>
+   
     <section class="container">
+      <alert v-if="error"></alert>
       <div class="columns">
         <div class="column is-3"></div>
         <div class="column is-6">
@@ -125,7 +127,11 @@
   </div>
 </template>
 <script>
+  import alert from '@/share/Alert'
   export default {
+    components: {
+      alert: alert
+    },
     data () {
       return {
         username: '',
@@ -183,6 +189,9 @@
       },
       isRegister () {
         return this.usernameValid && this.emailValid && this.repasswordValid
+      },
+      error () {
+        return this.$store.state.error.message !== ''
       }
     }
   }

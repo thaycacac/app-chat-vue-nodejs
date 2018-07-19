@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://thaycacac:Camonem123@ds239071.mlab.com:39071/test-login', {
   useMongoClient: true
@@ -27,7 +28,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(session({
-  secret: "Mobe, guarda meu segredo",
+  secret: "Keep my secret.",
   resave: false,
   saveUninitialized: false
 }));

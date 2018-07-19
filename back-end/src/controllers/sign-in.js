@@ -15,7 +15,7 @@ exports.get = (req, res) => {
   } else {
     res.status(403).send({
       auth: false,
-      msg: "Người dùng đang ngoại tuyến"
+      msg: "The user is offline"
     })
   }
 }
@@ -32,7 +32,7 @@ exports.post = (req, res) => {
           }
           res.status(200).send({
             auth: true,
-            message: "Đăng nhập thành công",
+            message: "Logged in successfully",
             name: user.name,
             email: user.email
           });
@@ -42,7 +42,7 @@ exports.post = (req, res) => {
         res.status(403).send({
           auth: false,
           type: 'password',
-          message: "Sai mật khẩu"
+          message: "Wrong password"
         });
       }
     })
@@ -50,7 +50,7 @@ exports.post = (req, res) => {
       res.status(403).send({
         auth: false,
         type: 'email',
-        message: "Email chưa được đăng ký"
+        message: "Email is not registered"
       });
     });
 }

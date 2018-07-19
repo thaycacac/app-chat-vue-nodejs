@@ -42,7 +42,11 @@
             <div class="column is-2">
                 <div 
                 class="button is-rounded is-large is-danger"
-                @click="onSubmit">Send...</div>
+                @click="onSubmit">
+                <span class="icon is-small">
+                    <i class="fas fa-comment"></i>
+                </span>
+                <span>Send...</span></div>
             </div>
         </div>
   </div>

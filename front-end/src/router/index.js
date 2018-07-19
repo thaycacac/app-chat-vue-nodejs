@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Register from '@/Components/Register'
 import SignIn from '@/Components/SignIn'
 import Home from '@/Components/Home'
+import Alert from '@/share/Alert'
 import Router from 'vue-router'
 
 Vue.use(Router)
@@ -23,6 +24,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/alert',
+      name: 'Alert',
+      component: Alert
     }
   ]
 })

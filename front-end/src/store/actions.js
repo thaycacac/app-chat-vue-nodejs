@@ -1,5 +1,4 @@
 import axios from 'axios'
-// import Buefy from 'buefy'
 
 export default {
   register ({commit}, user) {
@@ -12,20 +11,17 @@ export default {
     commit('setUser', user)
     )
     .then(response => {
-      // this.$dialog.alert(response.data.message)
-      alert(response.data.message)
-      console.log(response.data.message)
+      commit('setError', {
+        title: 'Message',
+        message: response.data.message
+      })
     })
     .catch(err => {
       console.log(err.message)
-      alert(err.response.data.message)
-      // Buefy.$dialog.alert({
-      //   title: 'Lỗi',
-      //   message: err.response.data.message,
-      //   type: 'is-danger',
-      //   hasIcon: true,
-      //   icon: 'times-circle'
-      // })
+      commit('setError', {
+        title: 'Error',
+        message: err.response.data.message
+      })
     })
     .finally(() => {
       commit('setLoading', false)
@@ -40,15 +36,38 @@ export default {
     .then(res => {
       if (res.data.auth) {
         commit('setUser', user)
-        alert('Login success')
-        console.log('login success')
+        commit('setError', {
+          title: 'Message',
+          message: 'Login success'
+        })
       }
     })
     .catch(err => {
-      alert(err.response.data.message)
+      commit('setError', {
+        title: 'Error',
+        message: err.response.data.message
+      })
     })
     .finally(() => {
       commit('setLoading', false)
+    })
+  },
+  logout ({commit}) {
+    axios.get('/api/logout')
+    .then(() => {
+      commit('setUser', {
+        username: '',
+        email: ''
+      })
+    })
+    .catch(err => {
+      console.log('Lỗi đăng xuất', err)
+    })
+  },
+  setError ({commit}) {
+    commit('setError', {
+      title: '',
+      message: ''
     })
   }
 }

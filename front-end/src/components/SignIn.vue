@@ -2,6 +2,7 @@
   <div>
     <br>
     <br>
+    <alert v-if="error"></alert>
     <section class="container">
       <div class="columns">
         <div class="column is-3"></div>
@@ -57,7 +58,6 @@
                 <li><p class="help is-danger" v-if="passwordValid === false">Contain at least 8 from the mentioned characters</p></li>
               </ul>
             </div>
-
             <div class="field is-grouped">
               <div class="control">
                 <!-- <router-link to="/"> -->
@@ -79,7 +79,11 @@
   </div>
 </template>
 <script>
+  import alert from '@/share/Alert'
   export default {
+    components: {
+      alert: alert
+    },
     data () {
       return {
         email: '',
@@ -114,6 +118,9 @@
         } else {
           return false
         }
+      },
+      error () {
+        return this.$store.state.error.message !== ''
       }
     }
   }

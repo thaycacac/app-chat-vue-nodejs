@@ -7,9 +7,9 @@ exports.post = (req, res) => {
   let user = new Users(req.body)
   user.save()
   .then(() => {
-    res.status(201).send({ message: "Đăng ký thành công." })
+    res.status(201).send({ message: "Register succeess" })
   })
   .catch(() => {
-    res.status(400).send({ message: "Tài khoản đã tồn tại" })
+    res.status(400).send({ message: "Account already exists"})
   })
 }

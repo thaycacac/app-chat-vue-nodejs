@@ -21,6 +21,7 @@ export default new Vuex.Store({
     email: '',
     loading: false,
     error: {
+      title: '',
       message: ''
     }
   },

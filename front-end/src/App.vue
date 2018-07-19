@@ -29,7 +29,7 @@
       <div class="hero-body">
         <div class="container has-text-centered">
           <h1 class="title">
-            <!-- this title -->
+            Message
           </h1>
           <h2 class="subtitle">
             Thaycacac
@@ -57,7 +57,7 @@
                   <a>SignIn</a>
                 </li>
               </router-link>
-              <li>
+              <li @click="logout">
                 <a>Logout</a>
               </li>
             </ul>
@@ -70,57 +70,14 @@
 </template>
 
 <script>
-  // import router from './router'
-
-  // export default {
-  //   name: 'app',
-
-  //   components: {
-  //     CcMain, CcHello, CcLogin, CcSignup
-  //   },
-
-  //   data () {
-  //     return {
-  //       title: 'Sistema de Login',
-  //       online: false,
-  //       user: { name: '', email: '' },
-  //       tab: 0
-  //     }
-  //   },
-
-  //   methods: {
-  //     login ([name, email]) {
-  //       this.online = true
-  //       this.user.name = name
-  //       this.user.email = email
-  //     },
-
-  //     logout () {
-  //       this.closeDialog('logoutMsg')
-  //       this.axios
-  //       .get('/api/logout')
-  //       .then(() => {
-  //         this.online = false
-  //         this.user = {}
-  //       })
-  //       .catch(err => {
-  //         console.log('Error on logout', err)
-  //       })
-  //     },
-
-  //     toggleLeftSidenav () {
-  //       this.$refs.leftSidenav.toggle()
-  //     },
-
-  //     openDialog (ref) {
-  //       this.$refs[ref].open()
-  //     },
-
-  //     closeDialog (ref) {
-  //       this.$refs[ref].close()
-  //     }
-  //   },
-
+  export default {
+    methods: {
+      logout () {
+        this.$store.dispatch('logout')
+      }
+    }
+  }
+  
   //   watch: {
   //     tab: function () {
   //       if (this.online && this.tab === 2) {
@@ -141,7 +98,6 @@
   //     })
   //   }
   // }
-
 </script>
 <style>
 

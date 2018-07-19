@@ -6,6 +6,6 @@ exports.restrict = (req, res, next) => {
   }
   else{
     req.session.error = 'Access denied'
-    res.status(403).send('Truy cập bị từ chối')
+    res.status(403).send('Access is denied')
   }
 }
