@@ -7,16 +7,15 @@ const Messages = require('../models/messages')
 
 router.post('/', (req, res, next) => {
   const message = new Messages({
-    content: req.body.content,
-    user: req.body.user
+    text: req.body.text,
+    sender: req.body.sender
   })
   res.status(201).json({
     message: 'POST success',
-    createdMessage: result
+    createdMessage: message
   })
   message.save()
   .then(result => {
-    console.log(result)
     res.status(201).json({
       message: 'POST success',
       createdMessage: result
@@ -31,8 +30,8 @@ router.post('/', (req, res, next) => {
 })
 
 router.get('/', (req, res, next) => {
-  console.log('object')
   Messages.find()
+  .select('text sender')
   .exec()
   .then(doc => {
     res.status(200).json(doc)

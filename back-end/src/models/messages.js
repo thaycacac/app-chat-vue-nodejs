@@ -3,12 +3,12 @@
 const mongoose = require('mongoose')
 
 const messageSchema = mongoose.Schema({
-  content: {
+  text: {
     type: String,
     require: true,
     trim: true
   },
-  user: {
+  sender: {
     type: String,
     required: true,
     trim: true

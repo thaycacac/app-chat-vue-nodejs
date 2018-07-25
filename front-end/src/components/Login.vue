@@ -68,26 +68,11 @@ export default {
 
   methods: {
     onSubmit () {
-      this.loading = true
-      this.axios
-      .post('/api/login', {
+      this.$store.dispatch('login', {
         email: this.email,
         password: this.password
       })
-      .then(res => {
-        if (res.data.auth) {
-          this.$emit('auth', [res.data.name, res.data.email])
-        }
-      })
-      .catch(err => {
-        this.failMsg = err.response.data.message
-        this.loginFail = true
-      })
-      .then(() => {
-        this.loading = false
-      })
     },
-
     checkEmail: _.debounce(function () {
       if (this.email.indexOf('@') === -1) {
         this.emailInfo = 'invalid'

@@ -9,5 +9,8 @@ export default {
   setError (state, status) {
     state.error.title = status.title
     state.error.message = status.message
+  },
+  setMessages (state, status) {
+    state.messages = status
   }
 }

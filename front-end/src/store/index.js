@@ -20,6 +20,7 @@ export default new Vuex.Store({
     username: '',
     email: '',
     loading: false,
+    messages: [],
     error: {
       title: '',
       message: ''

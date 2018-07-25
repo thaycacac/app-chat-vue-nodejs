@@ -57,17 +57,17 @@ export default {
   data () {
     return {
       clientMsg: '',
-      messages: [
-        { sender: 'admin', text: 'Hello' },
-        { sender: 'hoapnse05740', text: 'I\'m thaycacac' }
-      ],
+      messages: this.$store.state.messages,
       sender: this.$store.state.email
     }
   },
   methods: {
     onSubmit () {
+      this.$store.dispatch('sendMessagesServer', {
+        text: this.clientMsg,
+        sender: this.sender
+      })
       let client = this.$socket
-
       client.emit('chatMessage', { sender: this.sender, text: this.clientMsg })
       this.messages.push({ sender: this.sender, text: this.clientMsg })
       this.clientMsg = ''

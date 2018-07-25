@@ -2,7 +2,6 @@
 
 const express = require('express')
 const session = require('express-session')
-const history = require('connect-history-api-fallback')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
@@ -37,10 +36,6 @@ app.use(session({
 
 const views = express.static('views')
 app.use(views)
-app.use(history({
-  disableDotRule: true,
-  verbose: false
-}));
 app.use(views)
 
 app.use('/api/login', loginRoute)

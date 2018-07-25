@@ -1,5 +1,6 @@
 import axios from 'axios'
 import router from '../router'
+import store from '../store'
 
 export default {
   register ({commit}, user) {
@@ -30,6 +31,7 @@ export default {
   },
   login ({commit}, user) {
     commit('setLoading', true)
+    store.dispatch('loadMessages')
     axios.post('/api/login', {
       email: user.email,
       password: user.password
@@ -70,6 +72,19 @@ export default {
     commit('setError', {
       title: '',
       message: ''
+    })
+  },
+  loadMessages ({commit}) {
+    axios.get('/api/message')
+    .then(result => {
+      // console.log(result.data)
+      commit('setMessages', result.data)
+    })
+  },
+  sendMessagesServer ({commit}, message) {
+    axios.post('/api/message', {
+      text: message.text,
+      sender: message.sender
     })
   }
 }
