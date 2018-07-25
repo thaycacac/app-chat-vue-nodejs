@@ -14,10 +14,10 @@ server.listen(port);
 server.on('error', onError);
 
 io.on('connection', client => {
-  console.log('user connected')
+  console.log('User connected')
 
   client.on('disconnect', () => {
-    console.log('user disconnected')
+    console.log('User disconnected')
   })
 
   client.on('chatMessage', msg => {

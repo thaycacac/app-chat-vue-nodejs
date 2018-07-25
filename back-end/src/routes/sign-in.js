@@ -1,26 +1,29 @@
 'use strict';
 
+const express = require('express');
+const router = express.Router();
 const mongoose = require('mongoose');
 const users = mongoose.model('users');
 
-exports.get = (req, res) => {
+router.get('/', (req, res, next) => {
   if (req.session.user) {
     res.status(200).send({
       auth: true,
       user: {
-        name: req.session.user.name,
-        email: req.session.user.email
+          name: req.session.user.name,
+          email: req.session.user.email
       }
     })
   } else {
     res.status(403).send({
       auth: false,
-      msg: "The user is offline"
+      msg: "You don’t have permission to access on this server"
     })
   }
-}
+})
 
-exports.post = (req, res) => {
+
+router.post('/', (req, res, next) => {
   let auth = false;
   users.findOne({ email: req.body.email })
     .then(user => {
@@ -53,4 +56,6 @@ exports.post = (req, res) => {
         message: "Email is not registered"
       });
     });
-}
+});
+
+module.exports = router;
